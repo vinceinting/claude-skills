@@ -12,7 +12,7 @@ These skills are designed to work across any project - they must NEVER be hardco
 |-------|---------|--------|
 | [JARVIS](jarvis/) | Master Task Coordinator | Active |
 | [FLOW](flow/) | Task Movement Engine | Active |
-| [ORACLE](oracle/) | Documentation Guardian | Planned |
+| [ORACLE](oracle/) | Documentation Guardian | Active |
 | [PALADIN](paladin/) | Security Auditor | Planned |
 
 ---
