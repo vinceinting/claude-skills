@@ -14,6 +14,7 @@ These skills are designed to work across any project - they must NEVER be hardco
 | [FLOW](flow/) | Task Movement Engine | Active |
 | [ORACLE](oracle/) | Documentation Guardian | Active |
 | [PALADIN](paladin/) | Security Auditor | Active |
+| [CYLINDERS](cylinders/) | Intelligent Code Optimizer | Active |
 
 ---
 
@@ -60,6 +61,12 @@ JARVIS (Task Coordinator)
 PALADIN (Security)
     │
     └── Invoked at phase gates for security audit
+
+CYLINDERS (Code Optimizer)
+    │
+    ├── Analyzes codebase for patterns
+    ├── Suggests refactors for reusability
+    └── Adds approved refactor tasks to JARVIS
 ```
 
 ---
