@@ -1,20 +1,42 @@
-# Claude Skills
+# Claude Skills & Agents
 
-Portable, project-agnostic skills for Claude Code CLI.
+Portable, project-agnostic skills and agents for Claude Code CLI.
 
-These skills are designed to work across any project - they must NEVER be hardcoded to a specific codebase.
+These are designed to work across any project - they must NEVER be hardcoded to a specific codebase.
+
+---
+
+## Skills vs Agents
+
+| Type | Context | Best For |
+|------|---------|----------|
+| **Skill** | Shared with main conversation | Conversational coordination, quick operations |
+| **Agent** | Isolated subprocess | Deep analysis, background tasks, read-only audits |
 
 ---
 
 ## Available Skills
 
-| Skill | Purpose | Status |
-|-------|---------|--------|
-| [JARVIS](jarvis/) | Master Task Coordinator | Active |
-| [FLOW](flow/) | Task Movement Engine | Active |
-| [ORACLE](oracle/) | Documentation Guardian | Active |
-| [PALADIN](paladin/) | Security Auditor | Active |
-| [CYLINDERS](cylinders/) | Intelligent Code Optimizer | Active |
+Skills run in the main conversation context and are invoked with `/skillname`.
+
+| Skill | Purpose | Invocation |
+|-------|---------|------------|
+| [JARVIS](jarvis/) | Master Task Coordinator | `/jarvis` |
+| [FLOW](flow/) | Task Movement Engine | `/flow` |
+
+---
+
+## Available Agents
+
+Agents run in isolated context and are invoked with "Use the X agent to...".
+
+| Agent | Purpose | Invocation |
+|-------|---------|------------|
+| [ORACLE](oracle/) | Documentation Guardian | "Use oracle agent..." |
+| [PALADIN](paladin/) | Security Auditor | "Use paladin agent..." |
+| [CYLINDERS](cylinders/) | Intelligent Code Optimizer | "Use cylinders agent..." |
+
+**Note:** Agents are registered in `.claude/agents/` (project-level). The markdown files in this submodule serve as reference documentation.
 
 ---
 
@@ -43,31 +65,32 @@ git submodule update --remote skills
 
 ---
 
-## Skill Interactions
+## Interactions
 
 ```
-JARVIS (Task Coordinator)
-    │
-    ├── Maintains master checklist
-    ├── Determines task order
-    └── Feeds queue to FLOW
-            │
-            ├── Manages virtual columns
-            ├── Moves tasks through workflow
-            └── Invokes ORACLE on completion
-                    │
-                    └── Updates documentation
+SKILLS (Main Conversation)
+├── JARVIS (Task Coordinator)
+│   ├── Maintains master checklist
+│   ├── Determines task order
+│   └── Feeds queue to FLOW
+│
+└── FLOW (Task Movement)
+    ├── Manages virtual columns
+    └── Moves tasks through workflow
 
-PALADIN (Security)
-    │
-    └── Invoked at phase gates for security audit
-
-CYLINDERS (Code Optimizer)
-    │
+AGENTS (Isolated Context)
+├── ORACLE (Documentation Guardian)
+│   └── Audits docs, reports what needs updating
+│
+├── PALADIN (Security Auditor)
+│   └── Invoked at phase gates for security audit
+│
+└── CYLINDERS (Code Optimizer)
     ├── Analyzes codebase for patterns
-    ├── Suggests refactors for reusability
-    └── Adds approved refactor tasks to JARVIS
+    └── Suggests refactors (user adds to JARVIS)
 ```
+
+**Workflow:** Skills coordinate → Agents analyze → User acts on findings
 
 ---
 
